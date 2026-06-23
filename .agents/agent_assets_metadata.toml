@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "koNfo8nFH50k2obcRV1C-"
+uri = "file://artifacts/rural-fitness/public/images/hero.png"
+type = "image"
+title = "Hero rural fitness"
+
+[[generated]]
+id = "3ifRWt5uZVeZd2jflkRls"
+uri = "file://artifacts/rural-fitness/public/images/app-usage.png"
+type = "image"
+title = "App usage rural"
+
+[[generated]]
+id = "RQUI2F69Rn3Gm1GNrRYy0"
+uri = "file://artifacts/rural-fitness/public/images/community.png"
+type = "image"
+title = "Community workout"

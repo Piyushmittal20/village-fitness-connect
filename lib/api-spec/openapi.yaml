@@ -1,22 +1,30 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Rural Fitness Platform API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: trainers
+    description: Trainer operations
+  - name: routines
+    description: Workout routine operations
+  - name: dietPlans
+    description: Diet plan operations
+  - name: progress
+    description: Progress tracking operations
+  - name: dashboard
+    description: Dashboard and summary operations
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +32,376 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /trainers:
+    get:
+      operationId: listTrainers
+      tags: [trainers]
+      summary: List all trainers
+      parameters:
+        - name: specialty
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of trainers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Trainer"
+    post:
+      operationId: createTrainer
+      tags: [trainers]
+      summary: Create a trainer profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainerInput"
+      responses:
+        "201":
+          description: Created trainer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Trainer"
+
+  /trainers/{id}:
+    get:
+      operationId: getTrainer
+      tags: [trainers]
+      summary: Get a trainer by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Trainer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Trainer"
+        "404":
+          description: Not found
+
+  /trainers/{id}/stats:
+    get:
+      operationId: getTrainerStats
+      tags: [trainers]
+      summary: Get trainer stats (routines count, diet plans, followers)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Trainer stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrainerStats"
+
+  /trainers/{id}/routines:
+    get:
+      operationId: getTrainerRoutines
+      tags: [trainers]
+      summary: Get all routines by a trainer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of routines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Routine"
+
+  /trainers/{id}/diet-plans:
+    get:
+      operationId: getTrainerDietPlans
+      tags: [trainers]
+      summary: Get all diet plans by a trainer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of diet plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DietPlan"
+
+  /routines:
+    get:
+      operationId: listRoutines
+      tags: [routines]
+      summary: List all routines
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: difficulty
+          in: query
+          schema:
+            type: string
+        - name: trainerId
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of routines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Routine"
+    post:
+      operationId: createRoutine
+      tags: [routines]
+      summary: Create a workout routine
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoutineInput"
+      responses:
+        "201":
+          description: Created routine
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Routine"
+
+  /routines/featured:
+    get:
+      operationId: listFeaturedRoutines
+      tags: [routines]
+      summary: Get featured/popular routines
+      responses:
+        "200":
+          description: Featured routines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Routine"
+
+  /routines/{id}:
+    get:
+      operationId: getRoutine
+      tags: [routines]
+      summary: Get a routine by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Routine
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Routine"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateRoutine
+      tags: [routines]
+      summary: Update a routine
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoutineUpdate"
+      responses:
+        "200":
+          description: Updated routine
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Routine"
+    delete:
+      operationId: deleteRoutine
+      tags: [routines]
+      summary: Delete a routine
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /diet-plans:
+    get:
+      operationId: listDietPlans
+      tags: [dietPlans]
+      summary: List all diet plans
+      parameters:
+        - name: goal
+          in: query
+          schema:
+            type: string
+        - name: trainerId
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of diet plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DietPlan"
+    post:
+      operationId: createDietPlan
+      tags: [dietPlans]
+      summary: Create a diet plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DietPlanInput"
+      responses:
+        "201":
+          description: Created diet plan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DietPlan"
+
+  /diet-plans/{id}:
+    get:
+      operationId: getDietPlan
+      tags: [dietPlans]
+      summary: Get a diet plan by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Diet plan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DietPlan"
+        "404":
+          description: Not found
+
+  /progress:
+    get:
+      operationId: listProgress
+      tags: [progress]
+      summary: List progress entries
+      parameters:
+        - name: userId
+          in: query
+          schema:
+            type: integer
+        - name: routineId
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of progress entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProgressEntry"
+    post:
+      operationId: createProgress
+      tags: [progress]
+      summary: Log a progress entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProgressInput"
+      responses:
+        "201":
+          description: Created progress entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProgressEntry"
+
+  /progress/summary:
+    get:
+      operationId: getProgressSummary
+      tags: [progress]
+      summary: Get aggregate progress summary (total sessions, streaks, top routines)
+      responses:
+        "200":
+          description: Progress summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProgressSummary"
+
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [dashboard]
+      summary: Platform-wide summary stats
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +412,313 @@ components:
       required:
         - status
 
+    Trainer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        bio:
+          type: ["string", "null"]
+        location:
+          type: string
+        specialty:
+          type: string
+        avatarUrl:
+          type: ["string", "null"]
+        certificationLevel:
+          type: string
+        rating:
+          type: number
+        totalFollowers:
+          type: integer
+        createdAt:
+          type: string
+      required:
+        - id
+        - name
+        - location
+        - specialty
+        - certificationLevel
+        - rating
+        - totalFollowers
+        - createdAt
+
+    TrainerInput:
+      type: object
+      properties:
+        name:
+          type: string
+        bio:
+          type: string
+        location:
+          type: string
+        specialty:
+          type: string
+        avatarUrl:
+          type: string
+        certificationLevel:
+          type: string
+      required:
+        - name
+        - location
+        - specialty
+        - certificationLevel
+
+    TrainerStats:
+      type: object
+      properties:
+        trainerId:
+          type: integer
+        totalRoutines:
+          type: integer
+        totalDietPlans:
+          type: integer
+        totalFollowers:
+          type: integer
+        avgRating:
+          type: number
+      required:
+        - trainerId
+        - totalRoutines
+        - totalDietPlans
+        - totalFollowers
+        - avgRating
+
+    Routine:
+      type: object
+      properties:
+        id:
+          type: integer
+        trainerId:
+          type: integer
+        trainerName:
+          type: ["string", "null"]
+        title:
+          type: string
+        description:
+          type: ["string", "null"]
+        category:
+          type: string
+        difficulty:
+          type: string
+        durationMinutes:
+          type: integer
+        thumbnailUrl:
+          type: ["string", "null"]
+        isFeatured:
+          type: boolean
+        totalEnrollments:
+          type: integer
+        createdAt:
+          type: string
+      required:
+        - id
+        - trainerId
+        - title
+        - category
+        - difficulty
+        - durationMinutes
+        - isFeatured
+        - totalEnrollments
+        - createdAt
+
+    RoutineInput:
+      type: object
+      properties:
+        trainerId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        difficulty:
+          type: string
+        durationMinutes:
+          type: integer
+        thumbnailUrl:
+          type: string
+        isFeatured:
+          type: boolean
+      required:
+        - trainerId
+        - title
+        - category
+        - difficulty
+        - durationMinutes
+
+    RoutineUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        difficulty:
+          type: string
+        durationMinutes:
+          type: integer
+        thumbnailUrl:
+          type: string
+        isFeatured:
+          type: boolean
+
+    DietPlan:
+      type: object
+      properties:
+        id:
+          type: integer
+        trainerId:
+          type: integer
+        trainerName:
+          type: ["string", "null"]
+        title:
+          type: string
+        description:
+          type: ["string", "null"]
+        goal:
+          type: string
+        dailyCalories:
+          type: integer
+        mealsPerDay:
+          type: integer
+        durationWeeks:
+          type: integer
+        thumbnailUrl:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - trainerId
+        - title
+        - goal
+        - dailyCalories
+        - mealsPerDay
+        - durationWeeks
+        - createdAt
+
+    DietPlanInput:
+      type: object
+      properties:
+        trainerId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        goal:
+          type: string
+        dailyCalories:
+          type: integer
+        mealsPerDay:
+          type: integer
+        durationWeeks:
+          type: integer
+        thumbnailUrl:
+          type: string
+      required:
+        - trainerId
+        - title
+        - goal
+        - dailyCalories
+        - mealsPerDay
+        - durationWeeks
+
+    ProgressEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        routineId:
+          type: integer
+        routineTitle:
+          type: ["string", "null"]
+        completedAt:
+          type: string
+        durationMinutes:
+          type: integer
+        notes:
+          type: ["string", "null"]
+        caloriesBurned:
+          type: ["integer", "null"]
+      required:
+        - id
+        - userId
+        - routineId
+        - completedAt
+        - durationMinutes
+
+    ProgressInput:
+      type: object
+      properties:
+        userId:
+          type: integer
+        routineId:
+          type: integer
+        durationMinutes:
+          type: integer
+        notes:
+          type: string
+        caloriesBurned:
+          type: integer
+      required:
+        - userId
+        - routineId
+        - durationMinutes
+
+    ProgressSummary:
+      type: object
+      properties:
+        totalSessions:
+          type: integer
+        totalMinutes:
+          type: integer
+        currentStreak:
+          type: integer
+        topRoutines:
+          type: array
+          items:
+            $ref: "#/components/schemas/Routine"
+      required:
+        - totalSessions
+        - totalMinutes
+        - currentStreak
+        - topRoutines
+
+    DashboardSummary:
+      type: object
+      properties:
+        totalTrainers:
+          type: integer
+        totalRoutines:
+          type: integer
+        totalDietPlans:
+          type: integer
+        totalProgressSessions:
+          type: integer
+        villagesReached:
+          type: integer
+        featuredRoutines:
+          type: array
+          items:
+            $ref: "#/components/schemas/Routine"
+        topTrainers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Trainer"
+      required:
+        - totalTrainers
+        - totalRoutines
+        - totalDietPlans
+        - totalProgressSessions
+        - villagesReached
+        - featuredRoutines
+        - topTrainers
