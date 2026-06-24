@@ -53,41 +53,46 @@
 }
 
 :root {
-  --button-outline: rgba(0,0,0, .10);
-  --badge-outline: rgba(0,0,0, .05);
+  --button-outline: rgba(255,255,255, .10);
+  --badge-outline: rgba(255,255,255, .05);
   --opaque-button-border-intensity: -8;
-  --elevate-1: rgba(0,0,0, .03);
-  --elevate-2: rgba(0,0,0, .08);
+  --elevate-1: rgba(255,255,255, .03);
+  --elevate-2: rgba(255,255,255, .08);
 
-  /* Sand / Earth base */
-  --background: 42 29% 95%;
-  --foreground: 40 13% 9%;
+  /* Dark background: #0a0a0a */
+  --background: 0 0% 4%;
+  /* Headings near white */
+  --foreground: 0 0% 96%;
 
-  --border: 40 10% 85%;
-  --input: 40 10% 85%;
-  --ring: 13 73% 54%;
+  --border: 0 0% 12%;
+  --input: 0 0% 12%;
+  /* Neon green */
+  --ring: 110 100% 54%;
 
-  --card: 45 33% 98%;
-  --card-foreground: 40 13% 9%;
-  --card-border: 40 10% 85%;
+  /* Dark charcoal: #141414 */
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 96%;
+  --card-border: 0 0% 16%;
 
-  --popover: 45 33% 98%;
-  --popover-foreground: 40 13% 9%;
-  --popover-border: 40 10% 85%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 96%;
+  --popover-border: 0 0% 16%;
 
-  /* Vibrant Terracotta/Orange */
-  --primary: 13 73% 54%;
-  --primary-foreground: 0 0% 100%;
+  /* Primary Neon Green: #39ff14 */
+  --primary: 110 100% 54%;
+  --primary-foreground: 0 0% 4%;
 
-  /* Olive / Forest Green */
-  --secondary: 100 17% 25%;
-  --secondary-foreground: 42 29% 95%;
+  /* Secondary Electric Blue: #00b4ff */
+  --secondary: 198 100% 50%;
+  --secondary-foreground: 0 0% 96%;
 
-  --muted: 40 15% 90%;
-  --muted-foreground: 40 10% 45%;
+  /* Tertiary Orange: #ff6b35 */
+  --accent: 16 100% 60%;
+  --accent-foreground: 0 0% 96%;
 
-  --accent: 30 50% 85%;
-  --accent-foreground: 40 13% 9%;
+  /* Muted Text: #a3a3a3 */
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 64%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
@@ -98,32 +103,33 @@
 }
 
 .dark {
-  --background: 40 13% 9%;
-  --foreground: 42 29% 95%;
+  /* Same dark theme as root */
+  --background: 0 0% 4%;
+  --foreground: 0 0% 96%;
 
-  --border: 40 10% 20%;
-  --input: 40 10% 20%;
-  --ring: 13 73% 54%;
+  --border: 0 0% 12%;
+  --input: 0 0% 12%;
+  --ring: 110 100% 54%;
 
-  --card: 40 10% 12%;
-  --card-foreground: 42 29% 95%;
-  --card-border: 40 10% 20%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 96%;
+  --card-border: 0 0% 16%;
 
-  --popover: 40 10% 12%;
-  --popover-foreground: 42 29% 95%;
-  --popover-border: 40 10% 20%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 96%;
+  --popover-border: 0 0% 16%;
 
-  --primary: 13 73% 54%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 110 100% 54%;
+  --primary-foreground: 0 0% 4%;
 
-  --secondary: 100 17% 25%;
-  --secondary-foreground: 42 29% 95%;
+  --secondary: 198 100% 50%;
+  --secondary-foreground: 0 0% 96%;
 
-  --muted: 40 10% 15%;
-  --muted-foreground: 40 10% 65%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 64%;
 
-  --accent: 40 15% 18%;
-  --accent-foreground: 42 29% 95%;
+  --accent: 16 100% 60%;
+  --accent-foreground: 0 0% 96%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
@@ -139,14 +145,33 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight text-white;
   }
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(40, 13%, 15%) 100%);
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(0, 0%, 10%) 100%);
 }
 
 .font-display {
   font-family: var(--font-display);
 }
+
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.glass-neon {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(57,255,20,0.3);
+  box-shadow: 0 0 20px rgba(57,255,20,0.1);
+}
+.neon-text { color: #39ff14; text-shadow: 0 0 20px rgba(57,255,20,0.5); }
+.neon-blue { color: #00b4ff; }
+.neon-orange { color: #ff6b35; }
+.card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }

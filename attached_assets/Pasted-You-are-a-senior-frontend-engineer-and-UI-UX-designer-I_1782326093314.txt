@@ -1,0 +1,198 @@
+You are a senior frontend engineer and UI/UX designer.
+
+I have already built a modern one-page fitness website (SPA). Now I want you to UPGRADE it into a more advanced, production-ready platform.
+
+---
+
+## 🎯 OBJECTIVE
+
+Enhance the existing SPA to include:
+1. Multi-language support (English, Hindi, Marathi, Tamil, Gujarati)
+2. Left-side upload panel for workout & diet plans
+3. Trainer profile system (with social links)
+4. Maintain high-performance, modern UI (2025 trends)
+
+---
+
+## 🎨 DESIGN SYSTEM (MANDATORY)
+
+- Theme: Dark fitness (black / charcoal backgrounds)
+- Accent colors: Neon green, electric blue, orange
+- Style: Glassmorphism + soft shadows + gradients
+- UI feel: Premium fitness app (clean, bold, minimal)
+- Typography: Modern sans-serif (bold headings)
+- Animations:
+  - Smooth scrolling
+  - Hover lift effects on cards
+  - Animated buttons
+  - Subtle fade-in transitions
+
+---
+
+## 🌐 FEATURE 1: MULTI-LANGUAGE SUPPORT
+
+Implement internationalization using a scalable approach:
+
+- Languages:
+  - English (default)
+  - Hindi
+  - Marathi
+  - Tamil
+  - Gujarati
+
+- Add a language switcher dropdown in the navbar
+- All text (hero, features, buttons, CTA) should dynamically change
+- Use JSON-based translation files
+- Structure:
+  /locales/en.json
+  /locales/hi.json
+  /locales/mr.json
+  /locales/ta.json
+  /locales/gu.json
+
+- Ensure clean fallback to English
+- Make UI responsive for longer regional text
+
+---
+
+## 📂 FEATURE 2: LEFT SIDEBAR (UPLOAD PANEL)
+
+Add a fixed left-side glassmorphic sidebar with:
+
+### UI Elements:
+- Title: “Upload Daily Plan”
+- Textarea: Workout Plan
+- Textarea: Diet Plan
+- Upload Button
+
+### Behavior:
+- On submit:
+  - Save data (use localStorage for now)
+  - Include timestamp
+- Show success feedback (toast/snackbar)
+
+### Design:
+- Glass effect (blur + transparency)
+- Neon border highlight on focus
+- Smooth expand on hover
+
+---
+
+## 🧑‍🏫 FEATURE 3: TRAINER PROFILE SYSTEM
+
+Allow urban trainers to create and display profiles.
+
+### Profile Creation Form:
+- Name
+- Bio
+- Instagram Link
+- YouTube Channel Link
+
+### Behavior:
+- Save profile in localStorage
+- Allow editing/updating
+
+### Display:
+- Show profile in a stylish card:
+  - Trainer name
+  - Bio
+  - Clickable social links
+- Add subtle hover animation
+
+---
+
+## 📊 FEATURE 4: CONTENT FEED / DISPLAY
+
+- Display uploaded workout & diet plans in main area
+- Use card-based layout
+- Each card should show:
+  - Workout plan
+  - Diet plan
+  - Date
+
+- Optional:
+  - Sort by latest
+  - Scrollable feed
+
+---
+
+## 🧱 LAYOUT STRUCTURE
+
+Use a responsive flex/grid layout:
+
+Main Layout:
+- Left: Sidebar (fixed width)
+- Right: Main content
+
+Main Content includes:
+1. Hero Section
+2. Problem Section
+3. Solution Section
+4. Features Section
+5. Dashboard Preview
+6. Trainer Profiles
+7. Uploaded Plans Feed
+8. Testimonials
+9. CTA Section
+10. Footer
+
+---
+
+## ⚡ PERFORMANCE & CODE QUALITY
+
+- Use React (preferred) or clean HTML/CSS/JS
+- Component-based architecture
+- Lazy load heavy sections if needed
+- Optimize images
+- Clean folder structure
+
+---
+
+## 📱 RESPONSIVENESS
+
+- Mobile-first design
+- Sidebar becomes:
+  - Top collapsible panel OR bottom drawer on mobile
+- Ensure smooth UX across devices
+
+---
+
+## ✨ MICRO-INTERACTIONS
+
+- Button hover glow
+- Card hover lift
+- Smooth transitions (0.3s ease)
+- Animated progress bars in dashboard
+
+---
+
+## 🔮 FUTURE-READY (PREPARE CODE FOR)
+
+Even if not fully implemented, structure code to support:
+- Backend integration (Firebase / Supabase)
+- Authentication (trainer login)
+- Media uploads (images/videos)
+- Rating/review system
+
+---
+
+## 📦 OUTPUT EXPECTATION
+
+Generate:
+- Full working frontend code
+- Clean modular components
+- Beautiful UI with consistent styling
+- Working:
+  - Language switcher
+  - Sidebar upload
+  - Trainer profile system
+  - Data persistence (localStorage)
+
+---
+
+## 🚨 IMPORTANT
+
+- Do NOT generate basic UI
+- Make it look like a real startup product
+- Focus heavily on UI polish + usability
+- Keep code readable and scalable

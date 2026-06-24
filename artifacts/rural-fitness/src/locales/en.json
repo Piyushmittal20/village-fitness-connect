@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "trainers": "Trainers",
+    "routines": "Routines",
+    "dietPlans": "Diet Plans",
+    "impact": "Impact",
+    "myProgress": "My Progress"
+  },
+  "hero": {
+    "badge": "The Grassroots Fitness Movement",
+    "headline1": "Raw Energy Meets",
+    "headline2": "Expert Knowledge.",
+    "subtitle": "Bridging the gap between certified urban trainers and rural communities. Transform your village into a training ground.",
+    "cta": "Start Training",
+    "ctaSecondary": "Meet the Trainers"
+  },
+  "upload": {
+    "title": "Upload Daily Plan",
+    "workoutLabel": "Workout Plan",
+    "workoutPlaceholder": "Describe today's workout routine...",
+    "dietLabel": "Diet Plan",
+    "dietPlaceholder": "Describe today's diet plan...",
+    "submit": "Upload Plan",
+    "success": "Plan uploaded successfully!",
+    "empty": "No plans uploaded yet. Be the first!",
+    "feedTitle": "Community Plans"
+  },
+  "trainerProfile": {
+    "title": "Create Trainer Profile",
+    "name": "Full Name",
+    "bio": "Bio",
+    "bioPlaceholder": "Tell rural users about your fitness journey...",
+    "instagram": "Instagram Link",
+    "youtube": "YouTube Channel Link",
+    "save": "Save Profile",
+    "edit": "Edit Profile",
+    "update": "Update Profile",
+    "success": "Profile saved!",
+    "followers": "followers",
+    "rating": "rating"
+  },
+  "feed": {
+    "workout": "Workout",
+    "diet": "Diet",
+    "posted": "Posted",
+    "noPlans": "No plans uploaded yet.",
+    "latestFirst": "Latest First"
+  },
+  "stats": {
+    "trainers": "Certified Trainers",
+    "routines": "Workout Routines",
+    "villages": "Villages Reached",
+    "sessions": "Training Sessions"
+  },
+  "sections": {
+    "howItWorks": "How It Works",
+    "featuredRoutines": "Featured Routines",
+    "topTrainers": "Top Trainers",
+    "testimonials": "What People Say",
+    "cta": "Ready to Transform?",
+    "ctaSubtitle": "Join thousands of rural communities already on their fitness journey.",
+    "ctaButton": "Get Started Today"
+  },
+  "steps": {
+    "step1Title": "Trainers Upload",
+    "step1Desc": "Urban certified trainers upload daily workout routines and diet plans.",
+    "step2Title": "Community Accesses",
+    "step2Desc": "Rural trainers and users access curated content easily on any device.",
+    "step3Title": "Track Progress",
+    "step3Desc": "Log sessions, track streaks, and improve fitness together."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "viewAll": "View All",
+    "by": "by",
+    "min": "min",
+    "weeks": "weeks",
+    "calories": "kcal/day",
+    "meals": "meals/day"
+  }
+}
