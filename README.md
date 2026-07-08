@@ -14,4 +14,4 @@ A rural fitness platform connecting trainers and users across India, built with 
 
 ## Author
 
-Piyush Mittal (@Piyushmittal20)
+Piyush Mittal
